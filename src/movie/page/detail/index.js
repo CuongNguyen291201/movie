@@ -52,8 +52,11 @@ const DetailMovie = () => {
           <p>Vote average: {detailMovie.vote_average}</p>
           <p>Vote count: {detailMovie.vote_count}</p>
           <Button className="btn-primary" onClick={()=> setOpen(true)}>VIEW DEMO</Button>      
-          <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={detailMovie.videos.results[0].key} onClose={() => setOpen(false)} />
-
+          {
+            detailMovie.videos.hasOwnProperty('results')
+            &&
+            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={detailMovie.videos.results[0].key} onClose={() => setOpen(false)} />            
+          }
         </Col>
         <Col span={8}>
           {
